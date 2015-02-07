@@ -23,3 +23,4 @@ this is sum exp (![][\sum_{k=0}^{n}k])in remote.
 this is new sum exp (![][\sum_{k=0}^{n}2^k])in remote.
 
 [\sum_{k=0}^{n}k]: http://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D0%7D%5E%7Bn%7Dk "\sum_{k=0}^{n}k"
+[\sum_{k=0}^{n}2^k]: http://latex.codecogs.com/gif.latex?%5Csum_%7Bk%3D0%7D%5E%7Bn%7D2%5Ek
