@@ -76,8 +76,9 @@ def translate_math_link(math_exp):
   image_output_filename= gen_math_image_filename(math_exp, image_output_dirname)
   wget_math_image(math_exp, image_output_filename)
 
-  return '['+math_exp+']: '+ \
-    gen_math_image_filename(math_exp, image_output_dirname_base_on_output_file_path)
+  return '['+math_exp+']: "'+ \
+    gen_math_image_filename(math_exp, image_output_dirname_base_on_output_file_path) + \
+    '"'
 
 def translate_link(line):
   match_result= re.match('\[(.*)\]: #(.*)', line)
