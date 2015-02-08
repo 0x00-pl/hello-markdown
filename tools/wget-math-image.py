@@ -49,7 +49,6 @@ def get_configure(argv):
   return ret
 
 def gen_dirname_from_filename(filename):
-  print('gen_dirname_from_filename: ', filename)
   return filename+'.d'
 
 def gen_math_image_filename(math_exp, image_dir):
@@ -97,7 +96,6 @@ def translate_file(ifile_name, ofile_name):
   global global_config
   global_config['input']= ifile_name
   global_config['output']= ofile_name
-  print('translate_file(', ifile_name, ',', ofile_name, ')')
   infile= open(ifile_name, 'r')
   infile_lines= infile.readlines()
   infile.close()
@@ -111,7 +109,6 @@ def translate_file(ifile_name, ofile_name):
   outfile.close()
   
 def translate(ifile_path, ofile_path):
-  print('translate(', ifile_path, ',', ofile_path, ')')
   if os.path.isfile(ifile_path):
     # ifile_path is file
     if len(os.path.split(ofile_path)[1])!=0:
@@ -125,6 +122,7 @@ def translate(ifile_path, ofile_path):
     for item in os.listdir(ifile_path):
       cur_ifile_path= os.path.join(ifile_path, item)
       cur_ofile_path= os.path.join(ofile_path, item)
+      os.makedirs(ofile_path, exist_ok=True)
       translate(cur_ifile_path, cur_ofile_path)
     
 
