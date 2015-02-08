@@ -3,6 +3,7 @@ import os
 import sys
 import getopt
 import hashlib
+import urllib.parse
 
 def print_help():
   print("useage: "+sys.argv[0]+" [(-i|--input) <input-file-name>] [(-o|--output) <output-file-name>]")
@@ -60,7 +61,7 @@ def wget_math_image(math_exp, image_output_filename):
   wget_prefix= 'wget'
 
   url_prefix= 'http://latex.codecogs.com/gif.latex?'
-  image_url= url_prefix + math_exp
+  image_url= url_prefix + urllib.parse.quote(math_exp)
   image_url= '"'+image_url+'"'
 
   os.makedirs(os.path.split(image_output_filename)[0], exist_ok=True)
@@ -76,9 +77,8 @@ def translate_math_link(math_exp):
   image_output_filename= gen_math_image_filename(math_exp, image_output_dirname)
   wget_math_image(math_exp, image_output_filename)
 
-  return '['+math_exp+']: "'+ \
-    gen_math_image_filename(math_exp, image_output_dirname_base_on_output_file_path) + \
-    '"'
+  image_filename_base_on_output_file_path= gen_math_image_filename(math_exp, image_output_dirname_base_on_output_file_path)
+  return '['+math_exp+']: '+ urllib.parse.quote(image_filename_base_on_output_file_path)
 
 def translate_link(line):
   match_result= re.match('\[(.*)\]: #(.*)', line)
