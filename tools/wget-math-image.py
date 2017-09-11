@@ -133,5 +133,4 @@ def main():
   translate(global_config['input'], global_config['output'])
 
 if __name__=='__main__':
-  print(sys.argv)
   main()
